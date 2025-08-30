@@ -1,0 +1,4 @@
+emaillist\resources\JakartaEE11Resource.class
+murach\business\User.class
+emaillist\JakartaRestConfiguration.class
+murach\email\EmailListServlet.class
