@@ -40,7 +40,7 @@ public class EmailListServlet extends HttpServlet {
 
             // Lưu User vào request scope
             request.setAttribute("user", user);
-            url = "/thanks.jsp";   // Sau khi add → chuyển đến trang cảm ơn
+            url = "/thanks.jsp";   // Sau khi add → chuyển đến test
         }
 
         getServletContext()
