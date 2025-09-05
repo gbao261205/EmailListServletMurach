@@ -9,7 +9,7 @@
         <h1>Join our email list</h1>
         <p>To join our email list, enter your name and email address below</p>
         
-        <form action="${pageContext.request.contextPath}/test" method="post">
+        <form action="${pageContext.request.contextPath}/emailList" method="post">
             <input type="hidden" name="action" value="add">
             
             <label>Email:</label>
@@ -23,5 +23,8 @@
             
             <input type="submit" value="Join now" id="submit">
         </form>
+        
+        <!--<c:import url="/includes/footer.jsp" />-->
+        <%@ include file="/includes/footer.jsp" %>
     </body>
 </html>

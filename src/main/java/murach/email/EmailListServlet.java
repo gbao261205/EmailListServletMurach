@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 
 import murach.business.User;
 // import murach.data.UserDB;
@@ -33,6 +34,8 @@ public class EmailListServlet extends HttpServlet {
             String email     = request.getParameter("email");
             String firstName = request.getParameter("firstName");
             String lastName  = request.getParameter("lastName");
+            int currentYear = LocalDate.now().getYear();
+            request.setAttribute("currentYear", currentYear);
 
             // Tạo đối tượng User và (tạm thời chưa lưu DB)
             User user = new User(firstName, lastName, email);
