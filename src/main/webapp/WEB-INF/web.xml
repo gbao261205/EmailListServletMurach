@@ -8,19 +8,26 @@
     <servlet-name>EmailListServlet</servlet-name>
     <servlet-class>murach.email.EmailListServlet</servlet-class>
 </servlet>
-<!--<servlet>
-    <servlet-name>TestServlet</servlet-name>
-    <servlet-class>murach.test.TestServlet</servlet-class>
-</servlet>-->
 
 <servlet-mapping>
     <servlet-name>EmailListServlet</servlet-name>
     <url-pattern>/emailList</url-pattern>
 </servlet-mapping>
-<!--<servlet-mapping>
-    <servlet-name>TestServlet</servlet-name>
-    <url-pattern>/Test</url-pattern>
-</servlet-mapping>-->
+
+<!-- Cấm scriptlet trong JSP -->
+<jsp-config>
+    <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <scripting-invalid>true</scripting-invalid>
+    </jsp-property-group>
+</jsp-config>
+
+<!-- Thêm context-param: email CSKH -->
+<context-param>
+    <param-name>custServEmail</param-name>
+    <param-value>custserv@murach.com</param-value>
+</context-param>
+
 <session-config>
     <session-timeout>30</session-timeout>
 </session-config>

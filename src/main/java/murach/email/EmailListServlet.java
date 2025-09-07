@@ -5,7 +5,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 
 import murach.business.User;
 // import murach.data.UserDB;
@@ -35,14 +38,25 @@ public class EmailListServlet extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName  = request.getParameter("lastName");
             int currentYear = LocalDate.now().getYear();
+            
             request.setAttribute("currentYear", currentYear);
-
             // Tạo đối tượng User và (tạm thời chưa lưu DB)
             User user = new User(firstName, lastName, email);
-            // UserDB.insert(user);
-
             // Lưu User vào request scope
             request.setAttribute("user", user);
+            // UserDB.insert(user);
+
+            request.setAttribute("currentDate", new Date());
+            
+            HttpSession session = request.getSession();
+            @SuppressWarnings("unchecked")
+            ArrayList<User> users = (ArrayList<User>) session.getAttribute("users");
+            if (users == null) {
+                users = new ArrayList<>();
+                session.setAttribute("users", users);
+            }
+            users.add(user);
+            
             url = "/thanks.jsp";   // Sau khi add → chuyển đến test
         }
 
